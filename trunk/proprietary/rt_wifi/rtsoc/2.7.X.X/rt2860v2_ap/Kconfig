@@ -3,6 +3,7 @@ config RT2860V2_AP
 	select WIRELESS_EXT
 	select WEXT_SPY
 	select WEXT_PRIV
+	default y
 
 config  RT2860V2_AP_LED
 	bool "LED support"
@@ -90,10 +91,24 @@ choice
 	default INTERNAL_PA_INTERNAL_LNA
 config  INTERNAL_PA_INTERNAL_LNA
 	bool "Internal PA and Internal LNA"
+	depends on RT2860V2_AP 
+	default y
+	
 config  INTERNAL_PA_EXTERNAL_LNA
 	bool "Internal PA and External LNA"
+	depends on RT2860V2_AP 
+	default y
+	
+config  EXTERNAL_PA_INTERNAL_LNA
+        bool "EXTERNAL_PA_INTERNAL_LNA"
+	depends on RT2860V2_AP
+	default y
+	
 config  EXTERNAL_PA_EXTERNAL_LNA
 	bool "External PA and External LNA"
+	depends on RT2860V2_AP 
+	default y
+	
 endchoice
 
 config  RT2860V2_AP_RTMP_INTERNAL_TX_ALC
